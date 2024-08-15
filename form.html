@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    
+        body {
+            background-image: url('Light.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .container label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .container input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container .submit {
+            background-color: #09c909;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            height: 35px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: opacity 0.5s;
+            width: 100%;
+        }
+        .container .submit:hover {
+            opacity: 0.8;
+        }
+        .container .submit:active {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Form</h1>
+        <p class="detail">Enter your details</p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" name="phone">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <button class="submit" click="submitForm()">Submit</button>
+    </div>
+  </style> 
+      
+
+
+    <script>
+        function submitForm() {
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var email = document.getElementById('email').value;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://script.google.com/macros/s/AKfycbyn3dBrWF6RuLyfiWp41Rkw5XFx_qXNxBaYOpGULHPkVjtwGNdA5nw9ZpnXUpMwISDc/exec", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          alert('Form submitted successfully!');
+        }
+      };
+
+      var data = "name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) + "&email=" + encodeURIComponent(email);
+      xhr.send(data);
+    }
+    </script>
+</body>
+</html>
